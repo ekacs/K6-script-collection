@@ -15,7 +15,7 @@ export let options = {
 };
 
 export default function () {
-    let res = http.get('https://api-sipencatar.dephub.go.id/v1/admin/login'); // Fitur login admin
+    let res = http.get('https://api-sipencatar.dephub.go.id/v1/kesehatan'); // Fitur import hasil tes kesehatan
     check(res, {
         'status was 200': (r) => r.status === 200,
         'response time under 2s': (r) => r.timings.duration < 2000, // Optional: Check response time
