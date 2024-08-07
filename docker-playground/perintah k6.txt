@@ -1,0 +1,23 @@
+#install di ubuntu
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+sudo apt-get update
+sudo apt-get install k6
+
+#perintah
+docker run --rm -i -v /d/k6-kemenhub:/scripts -v /d/k6-kemenhub:/results grafana/k6 run /scripts/4hubnet-uji-k6-kemenhub.js --out csv=/results/hasil_uji_4hubnet.csv
+
+
+#artikel
+https://rifqimulyawan.com/kalkulator-bandwidth/
+
+#perintah di cloud
+sudo apt install gnupg
+sudo apt install gnupg1
+sudo apt install gnupg2
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+sudo echo "deb https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+sudo apt-get update
+sudo apt-get install k6
+k6 login cloud --token 7cd3f2ea5d42ad74b7b8ef27586f2974a36a9f4e549a47fa53d22fd8b7bcbd86
+k6 cloud /home/k6-kemenhub/6hubnet-uji-k6-kemenhub.js
