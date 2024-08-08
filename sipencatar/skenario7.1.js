@@ -1,5 +1,6 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
+import encoding from 'k6/encoding';
 
 export let options = {
     stages: [
@@ -16,7 +17,7 @@ export let options = {
 
 export default function () {
     let credentials = 'adminpusat@sipencatar.app:KemenhubAPusat';
-    let encodedCredentials = __ENV.BASIC_AUTH || `Basic ${btoa(credentials)}`;
+    let encodedCredentials = `Basic ${encoding.b64encode(credentials)}`;
 
     let params = {
         headers: {
@@ -24,7 +25,7 @@ export default function () {
         },
     };
 
-    let res = http.get('https://api-sipencatar.dephub.go.id/v1/psikotes', params);
+    let res = http.get('https://api-sipencatar.dephub.go.id/v1/kesehatan', params);
     check(res, {
         'status was 200': (r) => r.status === 200,
         'response time under 2s': (r) => r.timings.duration < 2000, // Memeriksa waktu respons

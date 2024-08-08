@@ -1,5 +1,6 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
+import encoding from 'k6/encoding';
 
 export let options = {
     stages: [
@@ -16,7 +17,7 @@ export let options = {
 
 export default function () {
     let credentials = 'adminpusat@sipencatar.app:KemenhubAPusat';
-    let encodedCredentials = __ENV.BASIC_AUTH || `Basic ${btoa(credentials)}`;
+    let encodedCredentials = `Basic ${encoding.b64encode(credentials)}`;
 
     let params = {
         headers: {
