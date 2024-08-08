@@ -25,7 +25,7 @@ export default function () {
         },
     };
 
-    let res = http.get('https://api-sipencatar.dephub.go.id/v1/kesehatan', params);
+    let res = http.get('https://api-sipencatar.dephub.go.id/v1/psikotes', params);
     check(res, {
         'status was 200': (r) => r.status === 200,
         'response time under 2s': (r) => r.timings.duration < 2000, // Memeriksa waktu respons
